@@ -4,11 +4,12 @@ import { styles } from './styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import background from '../../assets/img/background.gif'
 import { InputSenha } from '../../components/InputSenha'
-import { Checkbox } from 'react-native-paper';
+import { Checkbox, Snackbar } from 'react-native-paper';
 import { InputLogin } from '../../components/InputLogin'
 import { useFonts } from 'expo-font';
 import { Button } from 'react-native-paper';
 import { LoginContext } from '../../contexts/LoginContext'
+import { useNavigation } from '@react-navigation/native'
 
 export const Cadastro = () => {
     const [fontsLoaded] = useFonts({
@@ -18,6 +19,7 @@ export const Cadastro = () => {
     const [login, setLogin] = useState();
     const [senha, setSenha] = useState();
     const [confirmarSenha, setConfirmarSenha] = useState();
+    const navigate = useNavigation<any>();
     // const {enqueueSnackbar} = useSnackbar()
 
     useEffect(()=> {}, [])
@@ -27,6 +29,7 @@ export const Cadastro = () => {
             cadastrarUsuario(login, senha);
         }else{
             console.log('senha errada')
+            // <Alerta mensagem="teste"/>
             // enqueueSnackbar("senhas não coincidem!",{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
         }
     }
@@ -54,13 +57,14 @@ export const Cadastro = () => {
                             <Text style={styles.botaoCadastroText}>CADASTRAR</Text>
                         </TouchableOpacity>
 
-                        {/* <TouchableOpacity style={styles.containerInputsButtonLogar} onPress={() => console.log('Pressed')}>
-                            <Text style={styles.botaoLogarText}>Logar</Text>
-                        </TouchableOpacity> */}
-
                         <View style={styles.botaoCadastrar}>
-                            <Text style={styles.botaoCadastrarText}>Já possui cadastro? <TouchableOpacity><Text  style={{color: '#15b6df'}}>Click aqui!</Text></TouchableOpacity></Text>
+                            <Text style={styles.botaoCadastrarText}>Já possui cadastro?
+                                <TouchableOpacity onPress={()=> navigate.navigate('Login')}>
+                                    <Text  style={{color: '#15b6df'}}> Click aqui!</Text>
+                                </TouchableOpacity>
+                            </Text>
                         </View>
+
                     </View>
                 </View>
             </View>

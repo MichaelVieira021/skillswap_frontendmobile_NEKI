@@ -52,8 +52,6 @@ export const styles = StyleSheet.create({
   containerCadastroButtons: {
     alignItems: 'center',
     width: "100%",
-    // padding: 20,
-    // backgroundColor: "#00000075"
   },
 
   containerInputsButton: {
@@ -100,5 +98,5 @@ export const styles = StyleSheet.create({
     marginLeft: -25,
     marginTop: -10,
     alignSelf: 'flex-start'
-  },
+  }
 });

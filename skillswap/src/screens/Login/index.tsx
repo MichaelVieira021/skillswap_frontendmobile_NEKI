@@ -8,6 +8,7 @@ import { InputSenha } from '../../components/InputSenha'
 import { Checkbox } from 'react-native-paper';
 import { useFonts } from 'expo-font';
 import { LoginContext } from '../../contexts/LoginContext'
+import { useNavigation } from '@react-navigation/native'
 
 export const Login = () => {
     const [fontsLoaded] = useFonts({
@@ -18,6 +19,7 @@ export const Login = () => {
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
     const [gravarSenha, setGravarSenha] = useState(false);
+    const navigate = useNavigation<any>();
 
     useEffect(() => {
         const buscarDadosSalvos = async () => {
@@ -78,8 +80,13 @@ export const Login = () => {
                         </TouchableOpacity>
 
                         <View style={styles.botaoCadastrar}>
-                            <Text style={styles.botaoCadastrarText}>Não possui conta? <TouchableOpacity><Text  style={{color: '#15b6df'}}>Click aqui!</Text></TouchableOpacity></Text>
+                            <Text style={styles.botaoCadastrarText}>Não possui conta?
+                                <TouchableOpacity onPress={()=> navigate.navigate('Cadastro')}>
+                                    <Text  style={{color: '#15b6df'}}> Click aqui!</Text>
+                                </TouchableOpacity>
+                            </Text>
                         </View>
+
                     </View>
                 </View>
             </View>

@@ -16,16 +16,16 @@ export function LoginContextProvider({ children }: ContextProps) {
     // const {enqueueSnackbar} = useSnackbar()
 
     useEffect(() => {
-        const checkToken = () => {
-            if(localStorage.getItem('token') && localStorage.getItem('user')){
-                const storedToken = localStorage.getItem('token');
+        const checkToken = async () => {
+            if(AsyncStorage.getItem('token') && AsyncStorage.getItem('user')){
+                 const storedToken = await AsyncStorage.getItem('token');
 
                 verificarToken(storedToken).then((response)=>{
                     if(response.data === "Token válido"){
                         configurarToken(storedToken);
                     }else{
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('user');
+                        AsyncStorage.removeItem('token');
+                        AsyncStorage.removeItem('user');
                     }
                 }).catch((error)=>{
                     console.log(error.response.data.mensagem)
@@ -33,8 +33,8 @@ export function LoginContextProvider({ children }: ContextProps) {
                 })
 
             }else{
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
+                AsyncStorage.removeItem('token');
+                AsyncStorage.removeItem('user');
             }
         };
         checkToken();
