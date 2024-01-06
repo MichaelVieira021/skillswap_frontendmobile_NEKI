@@ -8,15 +8,18 @@ const styles = StyleSheet.create({
   },
   
   input: {
+    borderRadius: 100,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.5)',
+    // borderColor: 'white',
+    // borderColor: 'rgba(255, 255, 255, 0.5)',
     backgroundColor: '#261038',
     color: 'rgb(255, 255, 255)',
     height: 40,
-    fontSize: 22,
+    fontSize: 28,
     marginBottom: 15,
-    paddingLeft: 32,
+    paddingLeft: 45,
     width: '100%',
+    padding: 25
   },
 });
 

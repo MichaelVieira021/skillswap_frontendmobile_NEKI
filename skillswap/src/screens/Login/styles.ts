@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 export const styles = StyleSheet.create({
   backgroundLogin: {
@@ -10,18 +11,18 @@ export const styles = StyleSheet.create({
   },
 
   tituloLogin: {
-    fontSize: 55,
+    fontSize: 45,
     fontFamily: 'DevilCandle',
     fontWeight: '600',
     color: "white",
-    marginBottom: 15,
-    marginTop: 10,
+    marginBottom: 35,
+    marginTop: 19,
   },
 
   containerFormularioLoginCompleto: {
     width: '80%',
     maxWidth: 400,
-    height: 360,
+    height: 400,
     alignItems: 'center',
   },
 
@@ -53,6 +54,9 @@ export const styles = StyleSheet.create({
     height: 50,
     borderRadius: 6,
     backgroundColor: "white",
+    // border: '2px solid #261038',
+    // elevation: 1,
+    // color: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 18,
@@ -60,6 +64,7 @@ export const styles = StyleSheet.create({
 
   botaoLoginText: {
     fontSize: 24,
+    // color: "white"
   },
 
   botaoCadastrar: {

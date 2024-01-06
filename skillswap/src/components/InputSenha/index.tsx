@@ -20,10 +20,10 @@ export const InputSenha = (props : InputSenhaProps) => {
                 name="key" 
                 style={{
                     position: 'absolute',
-                    left: 3,
-                    top: 7,
+                    left: 13,
+                    top: 11,
                     color: 'gray',
-                    fontSize: 25
+                    fontSize: 28
                 }}
             />
 
@@ -39,13 +39,13 @@ export const InputSenha = (props : InputSenhaProps) => {
             <TouchableOpacity
                 style={{
                     position: 'absolute',
-                    top: 7,
-                    right: 8,
+                    top: 11,
+                    right: 15,
                 }}
                 onPress={()=> setVerSenha(!verSenha)}
             >
-              {verSenha ? <Entypo name="eye" size={24} color={'gray'}/> 
-              :<Entypo name="eye-with-line" size={24} color={'gray'}/>}
+              {verSenha ? <Entypo name="eye" size={28} color={'gray'}/> 
+              :<Entypo name="eye-with-line" size={28} color={'gray'}/>}
             </TouchableOpacity>
         </View>
     )

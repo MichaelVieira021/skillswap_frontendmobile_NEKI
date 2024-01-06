@@ -61,7 +61,7 @@ export const Login = () => {
 
                     <View style={styles.containerLoginButtons}>
                         <TouchableOpacity style={styles.containerInputsButton} onPress={() => console.log('Pressed')}>
-                            <Text style={styles.botaoLoginText}>LOGAR</Text>
+                            <Text style={styles.botaoLoginText}>ENTRAR</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.botaoCadastrar}>

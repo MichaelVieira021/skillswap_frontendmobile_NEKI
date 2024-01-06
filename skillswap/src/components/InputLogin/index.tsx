@@ -16,10 +16,10 @@ export const InputLogin = (props: InputLoginProps) => {
                 name="skull" 
                 style={{
                     position: 'absolute',
-                    left: 3,
-                    top: 7,
+                    left: 13,
+                    top: 10,
                     color: 'gray',
-                    fontSize: 25
+                    fontSize: 28
                 }}
             />
 
