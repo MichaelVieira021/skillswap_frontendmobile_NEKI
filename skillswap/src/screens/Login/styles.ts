@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
 
   gravadorDeSenha: {
     flex: 1,
-    marginLeft: -22,
+    marginLeft: -20,
     marginTop: -10,
     alignSelf: 'flex-start'
   },

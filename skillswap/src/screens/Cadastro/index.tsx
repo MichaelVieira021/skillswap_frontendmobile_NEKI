@@ -1,5 +1,5 @@
 import { Text, View, TouchableOpacity, ImageBackground, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { styles } from './styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import background from '../../assets/img/background.gif'
@@ -8,12 +8,13 @@ import { Checkbox } from 'react-native-paper';
 import { InputLogin } from '../../components/InputLogin'
 import { useFonts } from 'expo-font';
 import { Button } from 'react-native-paper';
+import { LoginContext } from '../../contexts/LoginContext'
 
 export const Cadastro = () => {
     const [fontsLoaded] = useFonts({
         'fontSkillSwap': require("../../assets/fonts/DevilCandle.otf"),
       });
-    // const {cadastrarUsuario} = useContext(CadastroContext)
+    const {cadastrarUsuario} = useContext(LoginContext)
     const [login, setLogin] = useState();
     const [senha, setSenha] = useState();
     const [confirmarSenha, setConfirmarSenha] = useState();
@@ -23,8 +24,9 @@ export const Cadastro = () => {
 
     const cadastrarNovoUsuario = () => {
         if(senha === confirmarSenha){
-            // cadastrarUsuario(login, senha);
+            cadastrarUsuario(login, senha);
         }else{
+            console.log('senha errada')
             // enqueueSnackbar("senhas não coincidem!",{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
         }
     }
@@ -48,7 +50,7 @@ export const Cadastro = () => {
                     </View>
 
                     <View style={styles.containerCadastroButtons}>
-                        <TouchableOpacity style={styles.containerInputsButton} onPress={() => console.log('Pressed')}>
+                        <TouchableOpacity style={styles.containerInputsButton} onPress={() => cadastrarNovoUsuario()}>
                             <Text style={styles.botaoCadastroText}>CADASTRAR</Text>
                         </TouchableOpacity>
 

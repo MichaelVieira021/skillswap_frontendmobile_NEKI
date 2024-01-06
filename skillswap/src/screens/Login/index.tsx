@@ -1,5 +1,5 @@
 import { Text, View, TouchableOpacity, ImageBackground, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { styles } from './styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import background from '../../assets/img/background.gif'
@@ -7,12 +7,14 @@ import { InputLogin } from '../../components/InputLogin'
 import { InputSenha } from '../../components/InputSenha'
 import { Checkbox } from 'react-native-paper';
 import { useFonts } from 'expo-font';
+import { LoginContext } from '../../contexts/LoginContext'
 
 export const Login = () => {
     const [fontsLoaded] = useFonts({
         'fontSkillSwap': require("../../assets/fonts/DevilCandle.otf"),
-      });
+    });
 
+    const { verificarLogin} = useContext(LoginContext);
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
     const [gravarSenha, setGravarSenha] = useState(false);
@@ -30,6 +32,7 @@ export const Login = () => {
         buscarDadosSalvos()
     }, [])
 
+    useEffect(()=> {}, [verificarLogin])
     useEffect(() => { }, [gravarSenha])
 
     const gravarLimparSenhaStorage = () => {
@@ -70,7 +73,7 @@ export const Login = () => {
                     </View>
 
                     <View style={styles.containerLoginButtons}>
-                        <TouchableOpacity style={styles.containerInputsButton} onPress={() => console.log('Pressed')}>
+                        <TouchableOpacity style={styles.containerInputsButton} onPress={() => verificarLogin(login, senha, gravarSenha)}>
                             <Text style={styles.botaoLoginText}>ENTRAR</Text>
                         </TouchableOpacity>
 
