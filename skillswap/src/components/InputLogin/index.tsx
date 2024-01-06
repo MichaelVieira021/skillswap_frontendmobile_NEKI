@@ -1,14 +1,20 @@
+import React from "react";
 import { TextInput, View } from 'react-native';
-import styles from './styles.ts';
+import styles from './styles';
 import { Ionicons } from '@expo/vector-icons';
 
-export const InputLogin = (props) => {
+interface InputLoginProps {
+    placeholder: string
+    login: string
+    setLogin: any
+}
+
+export const InputLogin = (props: InputLoginProps) => {
     return (
         <View style={styles.inputLogin} >
             <Ionicons 
                 name="skull" 
                 style={{
-                    width: '40px',
                     position: 'absolute',
                     left: 3,
                     top: 7,

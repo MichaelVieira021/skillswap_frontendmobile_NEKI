@@ -1,10 +1,17 @@
-import styles from './styles.ts';
-import { TextInput, View } from 'react-native';
+import React from "react";
+import styles from './styles';
+import { TextInput, TouchableOpacity, View } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { useState } from 'react';
 
-export const InputSenha = (props) => {
+interface InputSenhaProps {
+    placeholder: string
+    senha: string
+    setSenha: any
+}
+
+export const InputSenha = (props : InputSenhaProps) => {
     const [verSenha, setVerSenha] = useState(false)
 
     return(
@@ -12,7 +19,6 @@ export const InputSenha = (props) => {
             <FontAwesome 
                 name="key" 
                 style={{
-                    width: '40px',
                     position: 'absolute',
                     left: 3,
                     top: 7,
@@ -30,18 +36,17 @@ export const InputSenha = (props) => {
                 value={props.senha}
             />
 
-            <View
+            <TouchableOpacity
                 style={{
                     position: 'absolute',
                     top: 7,
                     right: 8,
-                    color: 'gray',
                 }}
-                onClick={()=> setVerSenha(!verSenha)}
+                onPress={()=> setVerSenha(!verSenha)}
             >
               {verSenha ? <Entypo name="eye" size={24} color={'gray'}/> 
               :<Entypo name="eye-with-line" size={24} color={'gray'}/>}
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }
