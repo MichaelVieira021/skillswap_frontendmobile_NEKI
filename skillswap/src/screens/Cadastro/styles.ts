@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
 
   containerCadastroButtons: {
     alignItems: 'center',
-    width: "120%",
+    width: "100%",
     // padding: 20,
     // backgroundColor: "#00000075"
   },
@@ -73,21 +73,6 @@ export const styles = StyleSheet.create({
     fontSize: 28,
     // fontWeight: 'bold',
     color: "#261038"
-  },
-
-  containerInputsButtonLogar:{
-    width: 350,
-    height: 35,
-    borderRadius: 100,
-    backgroundColor: "#210836",
-    alignItems: 'center',
-    justifyContent: 'center',
-    // marginBottom: 18,
-  },
-
-  botaoLogarText: {
-    fontSize: 24,
-    color: "white"
   },
 
   botaoCadastrar: {

@@ -34,7 +34,7 @@ export const Cadastro = () => {
             <View style={styles.containerFormularioCadastroCompleto}>
                 <View style={styles.containerFormularioCadastro}>
 
-                <Text style={[styles.tituloCadastro, {fontFamily: 'fontSkillSwap'}]}>SkillSwap</Text>
+                    <Text style={[styles.tituloCadastro, {fontFamily: 'fontSkillSwap'}]}>SkillSwap</Text>
                     <Text style={[styles.tituloCadastro, {fontSize: 28, letterSpacing: 9, marginTop: 0}]}>REGISTER</Text>
                     <View style={styles.containerInputs}>
 
@@ -55,9 +55,9 @@ export const Cadastro = () => {
                             <Text style={styles.botaoLogarText}>Logar</Text>
                         </TouchableOpacity> */}
 
-                        <TouchableOpacity style={styles.botaoCadastrar}>
-                            <Text style={styles.botaoCadastrarText}>Já possui cadastro? <Text style={{color: '#15b6df'}}>Click aqui!</Text></Text>
-                        </TouchableOpacity>
+                        <View style={styles.botaoCadastrar}>
+                            <Text style={styles.botaoCadastrarText}>Já possui cadastro? <TouchableOpacity><Text  style={{color: '#15b6df'}}>Click aqui!</Text></TouchableOpacity></Text>
+                        </View>
                     </View>
                 </View>
             </View>

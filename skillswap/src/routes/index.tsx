@@ -6,8 +6,8 @@ import { Cadastro } from '../screens/Cadastro';
 export const Routes = () => {
   return (
     <NavigationContainer>
-      {/* <Login/> */}
-      <Cadastro/>
+      <Login/>
+      {/* <Cadastro/> */}
     </NavigationContainer>
   );
 }

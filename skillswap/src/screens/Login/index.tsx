@@ -6,8 +6,13 @@ import background from '../../assets/img/background.gif'
 import { InputLogin } from '../../components/InputLogin'
 import { InputSenha } from '../../components/InputSenha'
 import { Checkbox } from 'react-native-paper';
+import { useFonts } from 'expo-font';
 
 export const Login = () => {
+    const [fontsLoaded] = useFonts({
+        'fontSkillSwap': require("../../assets/fonts/DevilCandle.otf"),
+      });
+
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
     const [gravarSenha, setGravarSenha] = useState(false);
@@ -41,7 +46,10 @@ export const Login = () => {
             <View style={styles.containerFormularioLoginCompleto}>
                 <View style={styles.containerFormularioLogin}>
 
-                    <Text style={styles.tituloLogin}>LOGIN</Text>
+                    <View style={{alignItems: 'center'}}>
+                        <Text style={[styles.tituloLogin, {fontFamily: 'fontSkillSwap'}]}>SkillSwap</Text>
+                        <Text style={[styles.tituloLogin, {fontSize: 28, letterSpacing: 9,marginTop: 0}]}>LOGIN</Text>
+                    </View>
                     <View style={styles.containerInputs}>
 
                         <InputLogin setLogin={setLogin} login={login} placeholder="Login" />
@@ -52,8 +60,10 @@ export const Login = () => {
                             <Checkbox.Item 
                                 status={gravarSenha ? "checked" : "unchecked"}
                                 label="Gravar senha"
-                                labelStyle={{color: 'white'}}
+                                labelStyle={{color: 'white', fontSize: 24}}
                                 position='leading'
+                                uncheckedColor='white'
+                                color='#15b6df'
                                 onPress={() => gravarLimparSenhaStorage()}
                             /> 
                         </View>
@@ -64,9 +74,9 @@ export const Login = () => {
                             <Text style={styles.botaoLoginText}>ENTRAR</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.botaoCadastrar}>
-                            <Text style={styles.botaoCadastrarText}>Não possui conta? Cadastre-se!</Text>
-                        </TouchableOpacity>
+                        <View style={styles.botaoCadastrar}>
+                            <Text style={styles.botaoCadastrarText}>Não possui conta? <TouchableOpacity><Text  style={{color: '#15b6df'}}>Click aqui!</Text></TouchableOpacity></Text>
+                        </View>
                     </View>
                 </View>
             </View>

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 export const styles = StyleSheet.create({
@@ -11,18 +11,21 @@ export const styles = StyleSheet.create({
   },
 
   tituloLogin: {
-    fontSize: 45,
+    fontSize: 65,
     fontFamily: 'DevilCandle',
     fontWeight: '600',
     color: "white",
-    marginBottom: 35,
-    marginTop: 19,
+    marginTop: 79,
+
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',
+    textShadowOffset: { width: 10, height: 10 },
+    textShadowRadius: 5,
   },
 
   containerFormularioLoginCompleto: {
-    width: '80%',
+    width: '95%',
     maxWidth: 400,
-    height: 400,
+    height: Dimensions.get('window').height,
     alignItems: 'center',
   },
 
@@ -32,54 +35,51 @@ export const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 10,
     alignItems: 'center',
-    backgroundColor: '#010216',
-    border: '1px solid white',
     padding: 9,
   },
 
   containerInputs: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: "85%"
+    width: "100%"
   },
 
   containerLoginButtons: {
     alignItems: 'center',
-    width: "100%"
+    width: "100%",
   },
 
   containerInputsButton: {
-    width: "60%",
-    height: 50,
-    borderRadius: 6,
+    width: 290,
+    height: 60,
+    borderRadius: 100,
     backgroundColor: "white",
-    // border: '2px solid #261038',
-    // elevation: 1,
-    // color: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 18,
   },
 
   botaoLoginText: {
-    fontSize: 24,
-    // color: "white"
+    fontSize: 28,
+    color: "#261038"
   },
 
   botaoCadastrar: {
     alignItems: "center",
     width: "100%",
+    padding: 5,
+    borderRadius: 100,
   },
 
   botaoCadastrarText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 22,
   },
 
   gravadorDeSenha: {
     flex: 1,
-    marginLeft: -25,
+    marginLeft: -22,
     marginTop: -10,
     alignSelf: 'flex-start'
   },
