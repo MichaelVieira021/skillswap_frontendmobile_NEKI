@@ -52,17 +52,18 @@ export const styles = StyleSheet.create({
 
   containerInputsButton: {
     width: 290,
-    height: 60,
+    height: 65,
     borderRadius: 100,
-    backgroundColor: "white",
+    backgroundColor: "#700000",
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 18,
+    border: '1px solid white'
   },
 
   botaoLoginText: {
     fontSize: 28,
-    color: "#261038"
+    color: "#ffffff"
   },
 
   botaoCadastrar: {

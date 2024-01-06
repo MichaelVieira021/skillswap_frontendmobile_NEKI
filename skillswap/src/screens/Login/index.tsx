@@ -48,7 +48,7 @@ export const Login = () => {
 
                     <View style={{alignItems: 'center'}}>
                         <Text style={[styles.tituloLogin, {fontFamily: 'fontSkillSwap'}]}>SkillSwap</Text>
-                        <Text style={[styles.tituloLogin, {fontSize: 28, letterSpacing: 9,marginTop: 0}]}>LOGIN</Text>
+                        <Text style={[styles.tituloLogin, {fontSize: 28, letterSpacing: 16,marginTop: 0}]}>LOGIN</Text>
                     </View>
                     <View style={styles.containerInputs}>
 

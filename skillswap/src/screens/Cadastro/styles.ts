@@ -58,21 +58,28 @@ export const styles = StyleSheet.create({
 
   containerInputsButton: {
     width: 290,
-    height: 60,
+    height: 65,
     borderRadius: 100,
-    backgroundColor: "white",
-    // border: '2px solid #261038',
-    // elevation: 1,
-    // color: 'white',
+    backgroundColor: "#700000",
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 18,
+    border: '1px solid white'
+    // Sombra para dispositivos Android
+    // elevation: 5, // Ajuste conforme necessário
+
+    // Sombra para dispositivos iOS
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowOpacity: 0.5,
+    // shadowRadius: 2,
   },
 
   botaoCadastroText: {
     fontSize: 28,
     // fontWeight: 'bold',
-    color: "#261038"
+    // color: "#261038"
+    color: '#ffffff'
   },
 
   botaoCadastrar: {

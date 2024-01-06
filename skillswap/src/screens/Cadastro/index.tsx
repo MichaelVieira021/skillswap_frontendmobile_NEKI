@@ -7,6 +7,7 @@ import { InputSenha } from '../../components/InputSenha'
 import { Checkbox } from 'react-native-paper';
 import { InputLogin } from '../../components/InputLogin'
 import { useFonts } from 'expo-font';
+import { Button } from 'react-native-paper';
 
 export const Cadastro = () => {
     const [fontsLoaded] = useFonts({

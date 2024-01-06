@@ -1,15 +1,5 @@
 {
   "expo": {
-    "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./src/assets/fonts/DevilCandle.otf"
-          ]
-        }
-      ]
-    ],
     "name": "skillswap",
     "slug": "skillswap",
     "version": "1.0.0",

@@ -18,7 +18,7 @@ export const InputLogin = (props: InputLoginProps) => {
                     position: 'absolute',
                     left: 13,
                     top: 10,
-                    color: 'gray',
+                    color: 'black',
                     fontSize: 28
                 }}
             />
