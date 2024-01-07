@@ -15,30 +15,36 @@ export function LoginContextProvider({ children }: ContextProps) {
     const navigate = useNavigation<any>();
     // const {enqueueSnackbar} = useSnackbar()
 
-    useEffect(() => {
-        const checkToken = async () => {
-            if(AsyncStorage.getItem('token') && AsyncStorage.getItem('user')){
-                 const storedToken = await AsyncStorage.getItem('token');
+    // useEffect(() => {
+    //     const checkToken = async () => {
 
-                verificarToken(storedToken).then((response)=>{
-                    if(response.data === "Token válido"){
-                        configurarToken(storedToken);
-                    }else{
-                        AsyncStorage.removeItem('token');
-                        AsyncStorage.removeItem('user');
-                    }
-                }).catch((error)=>{
-                    console.log(error.response.data.mensagem)
-                    // enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
-                })
+    //         if(await AsyncStorage.getItem('token') && await AsyncStorage.getItem('user')){
+                
+    //             const storedToken = await AsyncStorage.getItem('token');
+    //             console.log("teste4444")
 
-            }else{
-                AsyncStorage.removeItem('token');
-                AsyncStorage.removeItem('user');
-            }
-        };
-        checkToken();
-    }, []);
+    //             verificarToken(storedToken).then((response)=>{
+    //                 if(response.data === "Token válido"){
+    //                     configurarToken(storedToken);
+    //                     navigate.navigate('Home')
+    //                 }else{
+    //                     AsyncStorage.removeItem('token');
+    //                     AsyncStorage.removeItem('user');
+    //                     navigate.navigate('Login')
+    //                 }
+    //                 // storedToken == null || undefined ? navigate.navigate('Login') : navigate.navigate('Todos');
+    //             }).catch((error)=>{
+    //                 console.log(error.response.data.mensagem)
+    //                 // enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
+    //             })
+
+    //         }else{
+    //             AsyncStorage.removeItem('token');
+    //             AsyncStorage.removeItem('user');
+    //         }
+    //     };
+    //     checkToken();
+    // }, []);
 
     function verificarLogin(login: string, senha: string, gravarSenha: boolean) {
         verificarUsuario(login, senha).then((response) => {
@@ -54,7 +60,8 @@ export function LoginContextProvider({ children }: ContextProps) {
             }
             // enqueueSnackbar("Login efetuado com sucesso!",{variant:"success", anchorOrigin:{vertical:'top',horizontal:'right'}})
             console.log("ok")
-            navigate.navigate('/home')
+            navigate.navigate('Home')
+            // navigate.navigate('/home')
         }).catch((error) => {
             console.log(error.response.data.mensagem)
             // enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
@@ -65,7 +72,7 @@ export function LoginContextProvider({ children }: ContextProps) {
         cadastrarNovoUsuario(login, senha).then(()=>{
             console.log("ok")
             // enqueueSnackbar("Cadastrado com sucesso!",{variant:"success", anchorOrigin:{vertical:'top',horizontal:'right'}})
-            navigate.navigate('/login')
+            navigate.navigate('Login')
         }).catch((error)=>{
             console.log(error.response.data.mensagem)
             // enqueueSnackbar(error.response.data.mensagem,{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})

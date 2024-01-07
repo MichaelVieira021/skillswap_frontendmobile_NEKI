@@ -3,8 +3,10 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 
   paginaHomeListSkillUser: {
-    backgroundColor: '#010216',
+    backgroundColor: '#000000',
     marginTop: 0,
+    flex:1,
+    flexDirection: 'column'
   },
 
   tituloListaDeSkills: {
@@ -21,7 +23,9 @@ const styles = StyleSheet.create({
     fontFamily: 'DevilCandle',
     fontWeight: '600',
     color: "white",
-    marginTop: 79,
+    marginTop: 9,
+    borderBottomWidth:1,
+    borderBottomColor: 'white',
 
     textShadowColor: 'rgba(0, 0, 0, 0.7)',
     textShadowOffset: { width: 10, height: 10 },
@@ -83,6 +87,48 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40,
   },
+
+
+
+
+  //-----------------------
+
+  botaoFixo: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#010216',
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height:70,
+    borderTopColor: 'white',
+    borderTopWidth: 3
+  },
+
+  textoBotao: {
+    color: 'white', // Adapte a cor conforme necessário
+    fontSize: 20,
+    // fontWeight: 'bold',
+    letterSpacing: 9
+  },
+
+
+
+
+modalContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Cor de fundo escura para o modal
+},
+modalContent: {
+  backgroundColor: '#fff',
+  padding: 20,
+  borderRadius: 10,
+  width: '80%',
+},
 });
 
 export default styles;

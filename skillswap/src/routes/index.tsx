@@ -9,15 +9,15 @@ import { SkillsUser } from '../screens/SkillsUser';
 
 export const Routes = () => {
   return (
-    <SafeAreaProvider>
+    // <SafeAreaProvider>
     <NavigationContainer>
       <LoginContextProvider>
         {/* <Login/> */}
         {/* <Cadastro/> */}
-        <SkillsUser />
+        {/* <SkillsUser/> */}
         <StackNavigator/>
       </LoginContextProvider>
     </NavigationContainer>
-    </SafeAreaProvider>
+    // </SafeAreaProvider>
   );
 }
