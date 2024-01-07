@@ -9,14 +9,14 @@ interface CardProps {
     nome: string;
     tecAmp: number;
     atkAdicional: number;
-    duracao: number;
+    duracao?: number;
     resfriamento: number;
     foto: string;
   };
   baixarLevelSkill?: (id: number) => void,
   deletarSkillUser?: (id: number) => void,
   aumentarLevelSkill?: (id: number) => void,
-  idSkillUser: number,
+  idSkillUser?: number,
   level?: number,
 }
 

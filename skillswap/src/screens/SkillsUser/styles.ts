@@ -67,25 +67,42 @@ const styles = StyleSheet.create({
     width: '100%',
     maxHeight: 350,
   },
+  
 
   ModalObterSkill: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    display: 'flex',
-    flexDirection: 'column',
-    width: 400,
-    backgroundColor: 'rgb(255, 255, 255)',
-    boxShadow: '2px 2px 24px black',
-    borderRadius: 20,
+    // position: 'absolute',
+    // top: '50%',
+    // left: '50%',
+    // flex: 1,
+    // justifyContent: 'space-between',
     alignItems: 'center',
+    alignSelf: 'center',
+    // // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    // // display: 'flex',
+    // // flexDirection: 'column',
+    width: '90%',
+    // height:"70%",
+    backgroundColor: 'rgb(255, 255, 255)',
+    // boxShadow: '2px 2px 24px black',
+    borderRadius: 20,
+    // // alignItems: 'center',
   },
 
   tituloModalObterSkill: {
     fontFamily: 'fontSkillSwap',
-    fontSize: 40,
+    fontSize: 70,
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 20,
+    marginTop: 20,
+  },
+
+  inputNumerico: {
+    width: '15%',
+    height: 30,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 10,
+    fontSize:22
   },
 
 
