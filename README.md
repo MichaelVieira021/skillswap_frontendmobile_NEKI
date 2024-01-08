@@ -1,7 +1,7 @@
 
 
 <div align="center">
-<img src="./skillswap/public/mago.png" alt="Ícone do SkillSwap" width="50" height="50">
+<img src="./imgProj/mago.png" alt="Ícone do SkillSwap" width="50" height="50">
 
 [![Desenvolvido por: MichaelVieira](https://img.shields.io/badge/Desenvolvido%20por-MichaelVieira-blue.svg)](https://www.linkedin.com/in/michaelvieira021/)
 </div>
