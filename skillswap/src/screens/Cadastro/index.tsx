@@ -14,25 +14,25 @@ import { useNavigation } from '@react-navigation/native'
 export const Cadastro = () => {
     const [fontsLoaded] = useFonts({
         'fontSkillSwap': require("../../assets/fonts/DevilCandle.otf"),
-      });
-    const {cadastrarUsuario} = useContext(LoginContext)
+    });
+    const { cadastrarUsuario } = useContext(LoginContext)
     const [login, setLogin] = useState();
     const [senha, setSenha] = useState();
     const [confirmarSenha, setConfirmarSenha] = useState();
     const navigate = useNavigation<any>();
-    // const {enqueueSnackbar} = useSnackbar()
 
-    useEffect(()=> {}, [])
+    useEffect(() => { }, [])
 
-    const cadastrarNovoUsuario = () => {
-        if(senha === confirmarSenha){
-            cadastrarUsuario(login, senha);
-        }else{
-            console.log('senha errada')
-            // <Alerta mensagem="teste"/>
-            // enqueueSnackbar("senhas não coincidem!",{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
-        }
-    }
+    // const cadastrarNovoUsuario = () => {
+    //     if (senha === confirmarSenha) {
+    //         cadastrarUsuario(login, senha);
+    //     } else {
+    //         console.log('senha errada')
+
+    //         // <Alerta mensagem="teste"/>
+    //         // enqueueSnackbar("senhas não coincidem!",{variant:"error", anchorOrigin:{vertical:'top',horizontal:'right'}})
+    //     }
+    // }
 
     return (
 
@@ -40,27 +40,27 @@ export const Cadastro = () => {
             <View style={styles.containerFormularioCadastroCompleto}>
                 <View style={styles.containerFormularioCadastro}>
 
-                    <Text style={[styles.tituloCadastro, {fontFamily: 'fontSkillSwap'}]}>SkillSwap</Text>
-                    <Text style={[styles.tituloCadastro, {fontSize: 28, letterSpacing: 9, marginTop: 0}]}>REGISTER</Text>
+                    <Text style={[styles.tituloCadastro, { fontFamily: 'fontSkillSwap' }]}>SkillSwap</Text>
+                    <Text style={[styles.tituloCadastro, { fontSize: 28, letterSpacing: 9, marginTop: 0 }]}>REGISTER</Text>
                     <View style={styles.containerInputs}>
 
-                        <InputLogin setLogin={setLogin} login={login} placeholder="Login"/>
+                        <InputLogin setLogin={setLogin} login={login} placeholder="Login" />
 
                         <InputSenha setSenha={setSenha} senha={senha} placeholder="Senha" />
 
-                        <InputSenha setSenha={setConfirmarSenha} senha={confirmarSenha} placeholder="Confirmar"/>
+                        <InputSenha setSenha={setConfirmarSenha} senha={confirmarSenha} placeholder="Confirmar" />
 
                     </View>
 
                     <View style={styles.containerCadastroButtons}>
-                        <TouchableOpacity style={styles.containerInputsButton} onPress={() => cadastrarNovoUsuario()}>
+                        <TouchableOpacity style={styles.containerInputsButton} onPress={() => cadastrarUsuario(login, senha, confirmarSenha)}>
                             <Text style={styles.botaoCadastroText}>CADASTRAR</Text>
                         </TouchableOpacity>
 
                         <View style={styles.botaoCadastrar}>
                             <Text style={styles.botaoCadastrarText}>Já possui cadastro?
-                                <TouchableOpacity onPress={()=> navigate.navigate('Login')}>
-                                    <Text  style={{color: '#15b6df'}}> Click aqui!</Text>
+                                <TouchableOpacity onPress={() => navigate.navigate('Login')}>
+                                    <Text style={{ color: '#15b6df' }}> Click aqui!</Text>
                                 </TouchableOpacity>
                             </Text>
                         </View>

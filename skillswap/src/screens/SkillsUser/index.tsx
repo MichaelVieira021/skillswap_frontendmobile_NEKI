@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   adicionarSkillUser,
   delUserSkill,
@@ -14,7 +14,8 @@ import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from './styles';
 import { CardSkill } from '../../components/CardSkill'
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Button, Modal } from 'react-native-paper';
+import { Button, Modal, Snackbar } from 'react-native-paper';
+import { LoginContext } from '../../contexts/LoginContext';
 
 interface User {
   id: number;
@@ -32,7 +33,15 @@ interface Skill {
   foto: string;
 }
 
+interface ModalAlerta {
+  mensagem: string, 
+  visible: boolean, 
+  cor: string
+}
+
 export function SkillsUser() {
+  const {deslogar} = useContext(LoginContext)
+  const [infoAlert, setInfoAlert] = useState<ModalAlerta>({mensagem: '', visible: false, cor: 'black'});
   const [data, setData] = useState([]);
   const [listSkills, setListSkills] = useState<any>([{}]);
   const [user, setUser] = useState<User>({ id: 0, login: '', senha: '' });
@@ -41,26 +50,9 @@ export function SkillsUser() {
   const [levelSkillObter, setLevelSkillObter] = useState<number>(1);
   const [skillSelecionada, setSkillSelecionada] = useState<Skill>
     ({ id: 0, nome: '', tecAmp: 0, atkAdicional: 0, duracao: 0, resfriamento: 0, foto: '' })
-  // const { enqueueSnackbar } = useSnackbar()
 
-  useEffect(() => {
-    const carregarUser = async () => {
-      try {
-
-        if (await AsyncStorage.getItem('user')) {
-          const usuarioEncontrado = await AsyncStorage.getItem('user');
-          var teste = JSON.parse(usuarioEncontrado)
-          setUser(JSON.parse(usuarioEncontrado))
-          console.log(JSON.parse(usuarioEncontrado))
-        }
-      } catch (error) {
-      }
-    }
-    carregarUser()
-  }, [])
-
-  useEffect(() => { buscarSkill() }, [user])
-  useEffect(() => { }, [skillSelecionada])
+  useEffect(() => {buscarSkill()}, [])
+  useEffect(() => {}, [skillSelecionada])
 
   useEffect(() => {
     if (levelSkillObter > 20) {
@@ -68,62 +60,69 @@ export function SkillsUser() {
     }
   }, [levelSkillObter])
 
-  const buscarSkill = () => {
-    skillsUser(user.id).then((response) => {
+  const carregarUser = async () => {
+    try {
+
+      if (await AsyncStorage.getItem('user')) {
+        const usuarioEncontrado = await AsyncStorage.getItem('user');
+        setUser(JSON.parse(usuarioEncontrado))
+        return JSON.parse(usuarioEncontrado).id
+      }
+    } catch (error) {
+    }
+  }
+
+  const buscarSkill = async () => {
+    carregarUser()
+    skillsUser(await carregarUser()).then((response) => {
       setData(response.data)
-      console.log("deu certo")
     }).catch((e) => {
-      console.log(user.id)
-      // enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: e.response.data.mensagem, visible: true, cor: 'tomato'})
     })
   }
 
   const testeDeSkill = (itemTeste: any) => {
-    console.log(itemTeste)
     var teste = itemTeste.value
-    console.log(teste)
     obterSkillPorId(teste).then((response) => {
-      console.log(response.data)
       setSkillSelecionada(response.data)
     })
   }
 
+
   const aumentarLevelSkill = (id: number) => {
     levelUp(id).then(() => {
-      buscarSkill()
-      // enqueueSnackbar("Level up!!!", { variant: "success", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      buscarSkill(),
+      setInfoAlert({mensagem: 'Level up!!!', visible: true, cor: 'green'})
     }).catch((e) => {
-      // enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: e.response.data.mensagem, visible: true, cor: 'tomato'})
     })
   }
 
   const baixarLevelSkill = (id: number) => {
     levelDown(id).then(() => {
       buscarSkill()
-      // enqueueSnackbar("Level down!!!", { variant: "success", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: 'Level down!!!', visible: true, cor: 'green'})
     }).catch((e) => {
-      // enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: e.response.data.mensagem, visible: true, cor: 'tomato'})
     })
   }
 
   const deletarSkillUser = (id: number) => {
-    console.log("teste")
-    console.log(id)
     delUserSkill(id).then(() => {
       buscarSkill()
+      setInfoAlert({mensagem: 'Skill removida com sucesso!', visible: true, cor: 'green'})
     }).catch((e) => {
-      // enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: e.response.data.mensagem, visible: true, cor: 'tomato'})
     })
   }
 
   const obterListaSkills = () => {
-    console.log("testezao do modal")
     obterTodasSkillsUserNot(user.id).then((response) => {
       setModalVisible(true)
       setListSkills(response.data)
       setSkillSelecionada(response.data[0])
     }).catch((e) => {
-      // enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: e.response.data.mensagem, visible: true, cor: 'tomato'})
     })
   }
 
@@ -140,9 +139,9 @@ export function SkillsUser() {
       buscarSkill()
       setModalVisible(false)
       setLevelSkillObter(1)
-      // enqueueSnackbar("Skill adquirida com sucesso!", { variant: "success", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: 'Skill adquirida com sucesso!', visible: true, cor: 'green'})
     }).catch((e) => {
-      // enqueueSnackbar(e.response.data.mensagem, { variant: "error", anchorOrigin: { vertical: 'top', horizontal: 'right' } })
+      setInfoAlert({mensagem: e.response.data.mensagem, visible: true, cor: 'tomato'})
     })
   }
 
@@ -175,12 +174,19 @@ export function SkillsUser() {
         showsVerticalScrollIndicator={false}
       />
 
-      <TouchableOpacity
-        style={styles.botaoFixo}
-        onPress={() => obterListaSkills()}
+      <View
+        style={styles.botaoFixoContainer}
+        
       >
-        <Text style={[styles.textoBotao, { fontFamily: 'fontSkillSwap' }]}>LISTA SKILLS</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.botaoFixo} onPress={() => obterListaSkills()}>
+          <Text style={[styles.textoBotao, { fontFamily: 'fontSkillSwap'}]}>New Skill</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.botaoFixo, {backgroundColor: 'tomato'}]} onPress={() => deslogar()}>
+        <Text style={[styles.textoBotao, { fontFamily: 'fontSkillSwap'}]}>Sair</Text>
+        </TouchableOpacity>
+
+      </View>
 
       <Modal visible={modalVisible} >
         <View style={styles.ModalObterSkill}>
@@ -218,6 +224,7 @@ export function SkillsUser() {
               <CardSkill skill={skillSelecionada} />
             </View>
           </View>
+
           <View style={{ width: "95%", marginTop: 10, marginBottom: 10 }}>
             <Button
               mode="contained"
@@ -235,9 +242,17 @@ export function SkillsUser() {
             >Cancelar</Button>
           </View>
 
-
         </View>
       </Modal>
+
+      <Snackbar
+        style={{backgroundColor: infoAlert.cor, bottom: 70}}
+        elevation={5}
+        visible={infoAlert.visible}
+        duration={1000}
+        onDismiss={()=> setInfoAlert({mensagem: '', visible: false, cor: 'black'})}>
+        <Text style={{fontSize: 24, color: 'white'}}>{infoAlert.mensagem}</Text>
+      </Snackbar>
 
     </View>
   )

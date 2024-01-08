@@ -110,18 +110,29 @@ const styles = StyleSheet.create({
 
   //-----------------------
 
-  botaoFixo: {
+  botaoFixoContainer: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
     backgroundColor: '#010216',
+    // padding: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height:60,
+    borderTopColor: 'white',
+    borderTopWidth: 3,
+    flexDirection: 'row',
+  },
+
+  botaoFixo: {
+    height: '100%', 
+    width: '50%', 
+    backgroundColor: '#010216',
     padding: 10,
     alignItems: 'center',
-    justifyContent: 'center',
-    height:70,
-    borderTopColor: 'white',
-    borderTopWidth: 3
+    textAlign: 'center',
+    justifyContent: 'center'
   },
 
   textoBotao: {
